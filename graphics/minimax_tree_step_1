@@ -1,0 +1,1568 @@
+// TicTacToe-Minimax-Tree
+digraph {
+	X_________0 [label="X |   |  
+--+---+--
+  |   |  
+--+---+--
+  |   |  " fillcolor=white fontname=Courier fontsize=10 shape=box style=filled]
+	XO________1 [label="X | O |  
+--+---+--
+  |   |  
+--+---+--
+  |   |  " fillcolor=white fontname=Courier fontsize=10 shape=box style=filled]
+	X_________0 -> XO________1
+	XOX_______2 [label="X | O | X
+--+---+--
+  |   |  
+--+---+--
+  |   |  " fillcolor=white fontname=Courier fontsize=10 shape=box style=filled]
+	XO________1 -> XOX_______2
+	XOXO______3 [label="X | O | X
+--+---+--
+O |   |  
+--+---+--
+  |   |  " fillcolor=white fontname=Courier fontsize=10 shape=box style=filled]
+	XOX_______2 -> XOXO______3
+	XOX_O_____3 [label="X | O | X
+--+---+--
+  | O |  
+--+---+--
+  |   |  " fillcolor=white fontname=Courier fontsize=10 shape=box style=filled]
+	XOX_______2 -> XOX_O_____3
+	XOX__O____3 [label="X | O | X
+--+---+--
+  |   | O
+--+---+--
+  |   |  " fillcolor=white fontname=Courier fontsize=10 shape=box style=filled]
+	XOX_______2 -> XOX__O____3
+	XOX___O___3 [label="X | O | X
+--+---+--
+  |   |  
+--+---+--
+O |   |  " fillcolor=white fontname=Courier fontsize=10 shape=box style=filled]
+	XOX_______2 -> XOX___O___3
+	XOX____O__3 [label="X | O | X
+--+---+--
+  |   |  
+--+---+--
+  | O |  " fillcolor=white fontname=Courier fontsize=10 shape=box style=filled]
+	XOX_______2 -> XOX____O__3
+	XOX_____O_3 [label="X | O | X
+--+---+--
+  |   |  
+--+---+--
+  |   | O" fillcolor=white fontname=Courier fontsize=10 shape=box style=filled]
+	XOX_______2 -> XOX_____O_3
+	XO_X______2 [label="X | O |  
+--+---+--
+X |   |  
+--+---+--
+  |   |  " fillcolor=white fontname=Courier fontsize=10 shape=box style=filled]
+	XO________1 -> XO_X______2
+	XOOX______3 [label="X | O | O
+--+---+--
+X |   |  
+--+---+--
+  |   |  " fillcolor=white fontname=Courier fontsize=10 shape=box style=filled]
+	XO_X______2 -> XOOX______3
+	XO_XO_____3 [label="X | O |  
+--+---+--
+X | O |  
+--+---+--
+  |   |  " fillcolor=white fontname=Courier fontsize=10 shape=box style=filled]
+	XO_X______2 -> XO_XO_____3
+	XO_X_O____3 [label="X | O |  
+--+---+--
+X |   | O
+--+---+--
+  |   |  " fillcolor=white fontname=Courier fontsize=10 shape=box style=filled]
+	XO_X______2 -> XO_X_O____3
+	XO_X__O___3 [label="X | O |  
+--+---+--
+X |   |  
+--+---+--
+O |   |  " fillcolor=white fontname=Courier fontsize=10 shape=box style=filled]
+	XO_X______2 -> XO_X__O___3
+	XO_X___O__3 [label="X | O |  
+--+---+--
+X |   |  
+--+---+--
+  | O |  " fillcolor=white fontname=Courier fontsize=10 shape=box style=filled]
+	XO_X______2 -> XO_X___O__3
+	XO_X____O_3 [label="X | O |  
+--+---+--
+X |   |  
+--+---+--
+  |   | O" fillcolor=white fontname=Courier fontsize=10 shape=box style=filled]
+	XO_X______2 -> XO_X____O_3
+	XO__X_____2 [label="X | O |  
+--+---+--
+  | X |  
+--+---+--
+  |   |  " fillcolor=white fontname=Courier fontsize=10 shape=box style=filled]
+	XO________1 -> XO__X_____2
+	XOO_X_____3 [label="X | O | O
+--+---+--
+  | X |  
+--+---+--
+  |   |  " fillcolor=white fontname=Courier fontsize=10 shape=box style=filled]
+	XO__X_____2 -> XOO_X_____3
+	XO_OX_____3 [label="X | O |  
+--+---+--
+O | X |  
+--+---+--
+  |   |  " fillcolor=white fontname=Courier fontsize=10 shape=box style=filled]
+	XO__X_____2 -> XO_OX_____3
+	XO__XO____3 [label="X | O |  
+--+---+--
+  | X | O
+--+---+--
+  |   |  " fillcolor=white fontname=Courier fontsize=10 shape=box style=filled]
+	XO__X_____2 -> XO__XO____3
+	XO__X_O___3 [label="X | O |  
+--+---+--
+  | X |  
+--+---+--
+O |   |  " fillcolor=white fontname=Courier fontsize=10 shape=box style=filled]
+	XO__X_____2 -> XO__X_O___3
+	XO__X__O__3 [label="X | O |  
+--+---+--
+  | X |  
+--+---+--
+  | O |  " fillcolor=white fontname=Courier fontsize=10 shape=box style=filled]
+	XO__X_____2 -> XO__X__O__3
+	XO__X___O_3 [label="X | O |  
+--+---+--
+  | X |  
+--+---+--
+  |   | O" fillcolor=white fontname=Courier fontsize=10 shape=box style=filled]
+	XO__X_____2 -> XO__X___O_3
+	XO___X____2 [label="X | O |  
+--+---+--
+  |   | X
+--+---+--
+  |   |  " fillcolor=white fontname=Courier fontsize=10 shape=box style=filled]
+	XO________1 -> XO___X____2
+	XOO__X____3 [label="X | O | O
+--+---+--
+  |   | X
+--+---+--
+  |   |  " fillcolor=white fontname=Courier fontsize=10 shape=box style=filled]
+	XO___X____2 -> XOO__X____3
+	XO_O_X____3 [label="X | O |  
+--+---+--
+O |   | X
+--+---+--
+  |   |  " fillcolor=white fontname=Courier fontsize=10 shape=box style=filled]
+	XO___X____2 -> XO_O_X____3
+	XO__OX____3 [label="X | O |  
+--+---+--
+  | O | X
+--+---+--
+  |   |  " fillcolor=white fontname=Courier fontsize=10 shape=box style=filled]
+	XO___X____2 -> XO__OX____3
+	XO___XO___3 [label="X | O |  
+--+---+--
+  |   | X
+--+---+--
+O |   |  " fillcolor=white fontname=Courier fontsize=10 shape=box style=filled]
+	XO___X____2 -> XO___XO___3
+	XO___X_O__3 [label="X | O |  
+--+---+--
+  |   | X
+--+---+--
+  | O |  " fillcolor=white fontname=Courier fontsize=10 shape=box style=filled]
+	XO___X____2 -> XO___X_O__3
+	XO___X__O_3 [label="X | O |  
+--+---+--
+  |   | X
+--+---+--
+  |   | O" fillcolor=white fontname=Courier fontsize=10 shape=box style=filled]
+	XO___X____2 -> XO___X__O_3
+	XO____X___2 [label="X | O |  
+--+---+--
+  |   |  
+--+---+--
+X |   |  " fillcolor=white fontname=Courier fontsize=10 shape=box style=filled]
+	XO________1 -> XO____X___2
+	XOO___X___3 [label="X | O | O
+--+---+--
+  |   |  
+--+---+--
+X |   |  " fillcolor=white fontname=Courier fontsize=10 shape=box style=filled]
+	XO____X___2 -> XOO___X___3
+	XO_O__X___3 [label="X | O |  
+--+---+--
+O |   |  
+--+---+--
+X |   |  " fillcolor=white fontname=Courier fontsize=10 shape=box style=filled]
+	XO____X___2 -> XO_O__X___3
+	XO__O_X___3 [label="X | O |  
+--+---+--
+  | O |  
+--+---+--
+X |   |  " fillcolor=white fontname=Courier fontsize=10 shape=box style=filled]
+	XO____X___2 -> XO__O_X___3
+	XO___OX___3 [label="X | O |  
+--+---+--
+  |   | O
+--+---+--
+X |   |  " fillcolor=white fontname=Courier fontsize=10 shape=box style=filled]
+	XO____X___2 -> XO___OX___3
+	XO____XO__3 [label="X | O |  
+--+---+--
+  |   |  
+--+---+--
+X | O |  " fillcolor=white fontname=Courier fontsize=10 shape=box style=filled]
+	XO____X___2 -> XO____XO__3
+	XO____X_O_3 [label="X | O |  
+--+---+--
+  |   |  
+--+---+--
+X |   | O" fillcolor=white fontname=Courier fontsize=10 shape=box style=filled]
+	XO____X___2 -> XO____X_O_3
+	XO_____X__2 [label="X | O |  
+--+---+--
+  |   |  
+--+---+--
+  | X |  " fillcolor=white fontname=Courier fontsize=10 shape=box style=filled]
+	XO________1 -> XO_____X__2
+	XOO____X__3 [label="X | O | O
+--+---+--
+  |   |  
+--+---+--
+  | X |  " fillcolor=white fontname=Courier fontsize=10 shape=box style=filled]
+	XO_____X__2 -> XOO____X__3
+	XO_O___X__3 [label="X | O |  
+--+---+--
+O |   |  
+--+---+--
+  | X |  " fillcolor=white fontname=Courier fontsize=10 shape=box style=filled]
+	XO_____X__2 -> XO_O___X__3
+	XO__O__X__3 [label="X | O |  
+--+---+--
+  | O |  
+--+---+--
+  | X |  " fillcolor=white fontname=Courier fontsize=10 shape=box style=filled]
+	XO_____X__2 -> XO__O__X__3
+	XO___O_X__3 [label="X | O |  
+--+---+--
+  |   | O
+--+---+--
+  | X |  " fillcolor=white fontname=Courier fontsize=10 shape=box style=filled]
+	XO_____X__2 -> XO___O_X__3
+	XO____OX__3 [label="X | O |  
+--+---+--
+  |   |  
+--+---+--
+O | X |  " fillcolor=white fontname=Courier fontsize=10 shape=box style=filled]
+	XO_____X__2 -> XO____OX__3
+	XO_____XO_3 [label="X | O |  
+--+---+--
+  |   |  
+--+---+--
+  | X | O" fillcolor=white fontname=Courier fontsize=10 shape=box style=filled]
+	XO_____X__2 -> XO_____XO_3
+	XO______X_2 [label="X | O |  
+--+---+--
+  |   |  
+--+---+--
+  |   | X" fillcolor=white fontname=Courier fontsize=10 shape=box style=filled]
+	XO________1 -> XO______X_2
+	XOO_____X_3 [label="X | O | O
+--+---+--
+  |   |  
+--+---+--
+  |   | X" fillcolor=white fontname=Courier fontsize=10 shape=box style=filled]
+	XO______X_2 -> XOO_____X_3
+	XO_O____X_3 [label="X | O |  
+--+---+--
+O |   |  
+--+---+--
+  |   | X" fillcolor=white fontname=Courier fontsize=10 shape=box style=filled]
+	XO______X_2 -> XO_O____X_3
+	XO__O___X_3 [label="X | O |  
+--+---+--
+  | O |  
+--+---+--
+  |   | X" fillcolor=white fontname=Courier fontsize=10 shape=box style=filled]
+	XO______X_2 -> XO__O___X_3
+	XO___O__X_3 [label="X | O |  
+--+---+--
+  |   | O
+--+---+--
+  |   | X" fillcolor=white fontname=Courier fontsize=10 shape=box style=filled]
+	XO______X_2 -> XO___O__X_3
+	XO____O_X_3 [label="X | O |  
+--+---+--
+  |   |  
+--+---+--
+O |   | X" fillcolor=white fontname=Courier fontsize=10 shape=box style=filled]
+	XO______X_2 -> XO____O_X_3
+	XO_____OX_3 [label="X | O |  
+--+---+--
+  |   |  
+--+---+--
+  | O | X" fillcolor=white fontname=Courier fontsize=10 shape=box style=filled]
+	XO______X_2 -> XO_____OX_3
+	X_O_______1 [label="X |   | O
+--+---+--
+  |   |  
+--+---+--
+  |   |  " fillcolor=white fontname=Courier fontsize=10 shape=box style=filled]
+	X_________0 -> X_O_______1
+	XXO_______2 [label="X | X | O
+--+---+--
+  |   |  
+--+---+--
+  |   |  " fillcolor=white fontname=Courier fontsize=10 shape=box style=filled]
+	X_O_______1 -> XXO_______2
+	XXOO______3 [label="X | X | O
+--+---+--
+O |   |  
+--+---+--
+  |   |  " fillcolor=white fontname=Courier fontsize=10 shape=box style=filled]
+	XXO_______2 -> XXOO______3
+	XXO_O_____3 [label="X | X | O
+--+---+--
+  | O |  
+--+---+--
+  |   |  " fillcolor=white fontname=Courier fontsize=10 shape=box style=filled]
+	XXO_______2 -> XXO_O_____3
+	XXO__O____3 [label="X | X | O
+--+---+--
+  |   | O
+--+---+--
+  |   |  " fillcolor=white fontname=Courier fontsize=10 shape=box style=filled]
+	XXO_______2 -> XXO__O____3
+	XXO___O___3 [label="X | X | O
+--+---+--
+  |   |  
+--+---+--
+O |   |  " fillcolor=white fontname=Courier fontsize=10 shape=box style=filled]
+	XXO_______2 -> XXO___O___3
+	XXO____O__3 [label="X | X | O
+--+---+--
+  |   |  
+--+---+--
+  | O |  " fillcolor=white fontname=Courier fontsize=10 shape=box style=filled]
+	XXO_______2 -> XXO____O__3
+	XXO_____O_3 [label="X | X | O
+--+---+--
+  |   |  
+--+---+--
+  |   | O" fillcolor=white fontname=Courier fontsize=10 shape=box style=filled]
+	XXO_______2 -> XXO_____O_3
+	X_OX______2 [label="X |   | O
+--+---+--
+X |   |  
+--+---+--
+  |   |  " fillcolor=white fontname=Courier fontsize=10 shape=box style=filled]
+	X_O_______1 -> X_OX______2
+	X_OX______2 -> XOOX______3
+	X_OXO_____3 [label="X |   | O
+--+---+--
+X | O |  
+--+---+--
+  |   |  " fillcolor=white fontname=Courier fontsize=10 shape=box style=filled]
+	X_OX______2 -> X_OXO_____3
+	X_OX_O____3 [label="X |   | O
+--+---+--
+X |   | O
+--+---+--
+  |   |  " fillcolor=white fontname=Courier fontsize=10 shape=box style=filled]
+	X_OX______2 -> X_OX_O____3
+	X_OX__O___3 [label="X |   | O
+--+---+--
+X |   |  
+--+---+--
+O |   |  " fillcolor=white fontname=Courier fontsize=10 shape=box style=filled]
+	X_OX______2 -> X_OX__O___3
+	X_OX___O__3 [label="X |   | O
+--+---+--
+X |   |  
+--+---+--
+  | O |  " fillcolor=white fontname=Courier fontsize=10 shape=box style=filled]
+	X_OX______2 -> X_OX___O__3
+	X_OX____O_3 [label="X |   | O
+--+---+--
+X |   |  
+--+---+--
+  |   | O" fillcolor=white fontname=Courier fontsize=10 shape=box style=filled]
+	X_OX______2 -> X_OX____O_3
+	X_O_X_____2 [label="X |   | O
+--+---+--
+  | X |  
+--+---+--
+  |   |  " fillcolor=white fontname=Courier fontsize=10 shape=box style=filled]
+	X_O_______1 -> X_O_X_____2
+	X_O_X_____2 -> XOO_X_____3
+	X_OOX_____3 [label="X |   | O
+--+---+--
+O | X |  
+--+---+--
+  |   |  " fillcolor=white fontname=Courier fontsize=10 shape=box style=filled]
+	X_O_X_____2 -> X_OOX_____3
+	X_O_XO____3 [label="X |   | O
+--+---+--
+  | X | O
+--+---+--
+  |   |  " fillcolor=white fontname=Courier fontsize=10 shape=box style=filled]
+	X_O_X_____2 -> X_O_XO____3
+	X_O_X_O___3 [label="X |   | O
+--+---+--
+  | X |  
+--+---+--
+O |   |  " fillcolor=white fontname=Courier fontsize=10 shape=box style=filled]
+	X_O_X_____2 -> X_O_X_O___3
+	X_O_X__O__3 [label="X |   | O
+--+---+--
+  | X |  
+--+---+--
+  | O |  " fillcolor=white fontname=Courier fontsize=10 shape=box style=filled]
+	X_O_X_____2 -> X_O_X__O__3
+	X_O_X___O_3 [label="X |   | O
+--+---+--
+  | X |  
+--+---+--
+  |   | O" fillcolor=white fontname=Courier fontsize=10 shape=box style=filled]
+	X_O_X_____2 -> X_O_X___O_3
+	X_O__X____2 [label="X |   | O
+--+---+--
+  |   | X
+--+---+--
+  |   |  " fillcolor=white fontname=Courier fontsize=10 shape=box style=filled]
+	X_O_______1 -> X_O__X____2
+	X_O__X____2 -> XOO__X____3
+	X_OO_X____3 [label="X |   | O
+--+---+--
+O |   | X
+--+---+--
+  |   |  " fillcolor=white fontname=Courier fontsize=10 shape=box style=filled]
+	X_O__X____2 -> X_OO_X____3
+	X_O_OX____3 [label="X |   | O
+--+---+--
+  | O | X
+--+---+--
+  |   |  " fillcolor=white fontname=Courier fontsize=10 shape=box style=filled]
+	X_O__X____2 -> X_O_OX____3
+	X_O__XO___3 [label="X |   | O
+--+---+--
+  |   | X
+--+---+--
+O |   |  " fillcolor=white fontname=Courier fontsize=10 shape=box style=filled]
+	X_O__X____2 -> X_O__XO___3
+	X_O__X_O__3 [label="X |   | O
+--+---+--
+  |   | X
+--+---+--
+  | O |  " fillcolor=white fontname=Courier fontsize=10 shape=box style=filled]
+	X_O__X____2 -> X_O__X_O__3
+	X_O__X__O_3 [label="X |   | O
+--+---+--
+  |   | X
+--+---+--
+  |   | O" fillcolor=white fontname=Courier fontsize=10 shape=box style=filled]
+	X_O__X____2 -> X_O__X__O_3
+	X_O___X___2 [label="X |   | O
+--+---+--
+  |   |  
+--+---+--
+X |   |  " fillcolor=white fontname=Courier fontsize=10 shape=box style=filled]
+	X_O_______1 -> X_O___X___2
+	X_O___X___2 -> XOO___X___3
+	X_OO__X___3 [label="X |   | O
+--+---+--
+O |   |  
+--+---+--
+X |   |  " fillcolor=white fontname=Courier fontsize=10 shape=box style=filled]
+	X_O___X___2 -> X_OO__X___3
+	X_O_O_X___3 [label="X |   | O
+--+---+--
+  | O |  
+--+---+--
+X |   |  " fillcolor=white fontname=Courier fontsize=10 shape=box style=filled]
+	X_O___X___2 -> X_O_O_X___3
+	X_O__OX___3 [label="X |   | O
+--+---+--
+  |   | O
+--+---+--
+X |   |  " fillcolor=white fontname=Courier fontsize=10 shape=box style=filled]
+	X_O___X___2 -> X_O__OX___3
+	X_O___XO__3 [label="X |   | O
+--+---+--
+  |   |  
+--+---+--
+X | O |  " fillcolor=white fontname=Courier fontsize=10 shape=box style=filled]
+	X_O___X___2 -> X_O___XO__3
+	X_O___X_O_3 [label="X |   | O
+--+---+--
+  |   |  
+--+---+--
+X |   | O" fillcolor=white fontname=Courier fontsize=10 shape=box style=filled]
+	X_O___X___2 -> X_O___X_O_3
+	X_O____X__2 [label="X |   | O
+--+---+--
+  |   |  
+--+---+--
+  | X |  " fillcolor=white fontname=Courier fontsize=10 shape=box style=filled]
+	X_O_______1 -> X_O____X__2
+	X_O____X__2 -> XOO____X__3
+	X_OO___X__3 [label="X |   | O
+--+---+--
+O |   |  
+--+---+--
+  | X |  " fillcolor=white fontname=Courier fontsize=10 shape=box style=filled]
+	X_O____X__2 -> X_OO___X__3
+	X_O_O__X__3 [label="X |   | O
+--+---+--
+  | O |  
+--+---+--
+  | X |  " fillcolor=white fontname=Courier fontsize=10 shape=box style=filled]
+	X_O____X__2 -> X_O_O__X__3
+	X_O__O_X__3 [label="X |   | O
+--+---+--
+  |   | O
+--+---+--
+  | X |  " fillcolor=white fontname=Courier fontsize=10 shape=box style=filled]
+	X_O____X__2 -> X_O__O_X__3
+	X_O___OX__3 [label="X |   | O
+--+---+--
+  |   |  
+--+---+--
+O | X |  " fillcolor=white fontname=Courier fontsize=10 shape=box style=filled]
+	X_O____X__2 -> X_O___OX__3
+	X_O____XO_3 [label="X |   | O
+--+---+--
+  |   |  
+--+---+--
+  | X | O" fillcolor=white fontname=Courier fontsize=10 shape=box style=filled]
+	X_O____X__2 -> X_O____XO_3
+	X_O_____X_2 [label="X |   | O
+--+---+--
+  |   |  
+--+---+--
+  |   | X" fillcolor=white fontname=Courier fontsize=10 shape=box style=filled]
+	X_O_______1 -> X_O_____X_2
+	X_O_____X_2 -> XOO_____X_3
+	X_OO____X_3 [label="X |   | O
+--+---+--
+O |   |  
+--+---+--
+  |   | X" fillcolor=white fontname=Courier fontsize=10 shape=box style=filled]
+	X_O_____X_2 -> X_OO____X_3
+	X_O_O___X_3 [label="X |   | O
+--+---+--
+  | O |  
+--+---+--
+  |   | X" fillcolor=white fontname=Courier fontsize=10 shape=box style=filled]
+	X_O_____X_2 -> X_O_O___X_3
+	X_O__O__X_3 [label="X |   | O
+--+---+--
+  |   | O
+--+---+--
+  |   | X" fillcolor=white fontname=Courier fontsize=10 shape=box style=filled]
+	X_O_____X_2 -> X_O__O__X_3
+	X_O___O_X_3 [label="X |   | O
+--+---+--
+  |   |  
+--+---+--
+O |   | X" fillcolor=white fontname=Courier fontsize=10 shape=box style=filled]
+	X_O_____X_2 -> X_O___O_X_3
+	X_O____OX_3 [label="X |   | O
+--+---+--
+  |   |  
+--+---+--
+  | O | X" fillcolor=white fontname=Courier fontsize=10 shape=box style=filled]
+	X_O_____X_2 -> X_O____OX_3
+	X__O______1 [label="X |   |  
+--+---+--
+O |   |  
+--+---+--
+  |   |  " fillcolor=white fontname=Courier fontsize=10 shape=box style=filled]
+	X_________0 -> X__O______1
+	XX_O______2 [label="X | X |  
+--+---+--
+O |   |  
+--+---+--
+  |   |  " fillcolor=white fontname=Courier fontsize=10 shape=box style=filled]
+	X__O______1 -> XX_O______2
+	XX_O______2 -> XXOO______3
+	XX_OO_____3 [label="X | X |  
+--+---+--
+O | O |  
+--+---+--
+  |   |  " fillcolor=white fontname=Courier fontsize=10 shape=box style=filled]
+	XX_O______2 -> XX_OO_____3
+	XX_O_O____3 [label="X | X |  
+--+---+--
+O |   | O
+--+---+--
+  |   |  " fillcolor=white fontname=Courier fontsize=10 shape=box style=filled]
+	XX_O______2 -> XX_O_O____3
+	XX_O__O___3 [label="X | X |  
+--+---+--
+O |   |  
+--+---+--
+O |   |  " fillcolor=white fontname=Courier fontsize=10 shape=box style=filled]
+	XX_O______2 -> XX_O__O___3
+	XX_O___O__3 [label="X | X |  
+--+---+--
+O |   |  
+--+---+--
+  | O |  " fillcolor=white fontname=Courier fontsize=10 shape=box style=filled]
+	XX_O______2 -> XX_O___O__3
+	XX_O____O_3 [label="X | X |  
+--+---+--
+O |   |  
+--+---+--
+  |   | O" fillcolor=white fontname=Courier fontsize=10 shape=box style=filled]
+	XX_O______2 -> XX_O____O_3
+	X_XO______2 [label="X |   | X
+--+---+--
+O |   |  
+--+---+--
+  |   |  " fillcolor=white fontname=Courier fontsize=10 shape=box style=filled]
+	X__O______1 -> X_XO______2
+	X_XO______2 -> XOXO______3
+	X_XOO_____3 [label="X |   | X
+--+---+--
+O | O |  
+--+---+--
+  |   |  " fillcolor=white fontname=Courier fontsize=10 shape=box style=filled]
+	X_XO______2 -> X_XOO_____3
+	X_XO_O____3 [label="X |   | X
+--+---+--
+O |   | O
+--+---+--
+  |   |  " fillcolor=white fontname=Courier fontsize=10 shape=box style=filled]
+	X_XO______2 -> X_XO_O____3
+	X_XO__O___3 [label="X |   | X
+--+---+--
+O |   |  
+--+---+--
+O |   |  " fillcolor=white fontname=Courier fontsize=10 shape=box style=filled]
+	X_XO______2 -> X_XO__O___3
+	X_XO___O__3 [label="X |   | X
+--+---+--
+O |   |  
+--+---+--
+  | O |  " fillcolor=white fontname=Courier fontsize=10 shape=box style=filled]
+	X_XO______2 -> X_XO___O__3
+	X_XO____O_3 [label="X |   | X
+--+---+--
+O |   |  
+--+---+--
+  |   | O" fillcolor=white fontname=Courier fontsize=10 shape=box style=filled]
+	X_XO______2 -> X_XO____O_3
+	X__OX_____2 [label="X |   |  
+--+---+--
+O | X |  
+--+---+--
+  |   |  " fillcolor=white fontname=Courier fontsize=10 shape=box style=filled]
+	X__O______1 -> X__OX_____2
+	X__OX_____2 -> XO_OX_____3
+	X__OX_____2 -> X_OOX_____3
+	X__OXO____3 [label="X |   |  
+--+---+--
+O | X | O
+--+---+--
+  |   |  " fillcolor=white fontname=Courier fontsize=10 shape=box style=filled]
+	X__OX_____2 -> X__OXO____3
+	X__OX_O___3 [label="X |   |  
+--+---+--
+O | X |  
+--+---+--
+O |   |  " fillcolor=white fontname=Courier fontsize=10 shape=box style=filled]
+	X__OX_____2 -> X__OX_O___3
+	X__OX__O__3 [label="X |   |  
+--+---+--
+O | X |  
+--+---+--
+  | O |  " fillcolor=white fontname=Courier fontsize=10 shape=box style=filled]
+	X__OX_____2 -> X__OX__O__3
+	X__OX___O_3 [label="X |   |  
+--+---+--
+O | X |  
+--+---+--
+  |   | O" fillcolor=white fontname=Courier fontsize=10 shape=box style=filled]
+	X__OX_____2 -> X__OX___O_3
+	X__O_X____2 [label="X |   |  
+--+---+--
+O |   | X
+--+---+--
+  |   |  " fillcolor=white fontname=Courier fontsize=10 shape=box style=filled]
+	X__O______1 -> X__O_X____2
+	X__O_X____2 -> XO_O_X____3
+	X__O_X____2 -> X_OO_X____3
+	X__OOX____3 [label="X |   |  
+--+---+--
+O | O | X
+--+---+--
+  |   |  " fillcolor=white fontname=Courier fontsize=10 shape=box style=filled]
+	X__O_X____2 -> X__OOX____3
+	X__O_XO___3 [label="X |   |  
+--+---+--
+O |   | X
+--+---+--
+O |   |  " fillcolor=white fontname=Courier fontsize=10 shape=box style=filled]
+	X__O_X____2 -> X__O_XO___3
+	X__O_X_O__3 [label="X |   |  
+--+---+--
+O |   | X
+--+---+--
+  | O |  " fillcolor=white fontname=Courier fontsize=10 shape=box style=filled]
+	X__O_X____2 -> X__O_X_O__3
+	X__O_X__O_3 [label="X |   |  
+--+---+--
+O |   | X
+--+---+--
+  |   | O" fillcolor=white fontname=Courier fontsize=10 shape=box style=filled]
+	X__O_X____2 -> X__O_X__O_3
+	X__O__X___2 [label="X |   |  
+--+---+--
+O |   |  
+--+---+--
+X |   |  " fillcolor=white fontname=Courier fontsize=10 shape=box style=filled]
+	X__O______1 -> X__O__X___2
+	X__O__X___2 -> XO_O__X___3
+	X__O__X___2 -> X_OO__X___3
+	X__OO_X___3 [label="X |   |  
+--+---+--
+O | O |  
+--+---+--
+X |   |  " fillcolor=white fontname=Courier fontsize=10 shape=box style=filled]
+	X__O__X___2 -> X__OO_X___3
+	X__O_OX___3 [label="X |   |  
+--+---+--
+O |   | O
+--+---+--
+X |   |  " fillcolor=white fontname=Courier fontsize=10 shape=box style=filled]
+	X__O__X___2 -> X__O_OX___3
+	X__O__XO__3 [label="X |   |  
+--+---+--
+O |   |  
+--+---+--
+X | O |  " fillcolor=white fontname=Courier fontsize=10 shape=box style=filled]
+	X__O__X___2 -> X__O__XO__3
+	X__O__X_O_3 [label="X |   |  
+--+---+--
+O |   |  
+--+---+--
+X |   | O" fillcolor=white fontname=Courier fontsize=10 shape=box style=filled]
+	X__O__X___2 -> X__O__X_O_3
+	X__O___X__2 [label="X |   |  
+--+---+--
+O |   |  
+--+---+--
+  | X |  " fillcolor=white fontname=Courier fontsize=10 shape=box style=filled]
+	X__O______1 -> X__O___X__2
+	X__O___X__2 -> XO_O___X__3
+	X__O___X__2 -> X_OO___X__3
+	X__OO__X__3 [label="X |   |  
+--+---+--
+O | O |  
+--+---+--
+  | X |  " fillcolor=white fontname=Courier fontsize=10 shape=box style=filled]
+	X__O___X__2 -> X__OO__X__3
+	X__O_O_X__3 [label="X |   |  
+--+---+--
+O |   | O
+--+---+--
+  | X |  " fillcolor=white fontname=Courier fontsize=10 shape=box style=filled]
+	X__O___X__2 -> X__O_O_X__3
+	X__O__OX__3 [label="X |   |  
+--+---+--
+O |   |  
+--+---+--
+O | X |  " fillcolor=white fontname=Courier fontsize=10 shape=box style=filled]
+	X__O___X__2 -> X__O__OX__3
+	X__O___XO_3 [label="X |   |  
+--+---+--
+O |   |  
+--+---+--
+  | X | O" fillcolor=white fontname=Courier fontsize=10 shape=box style=filled]
+	X__O___X__2 -> X__O___XO_3
+	X__O____X_2 [label="X |   |  
+--+---+--
+O |   |  
+--+---+--
+  |   | X" fillcolor=white fontname=Courier fontsize=10 shape=box style=filled]
+	X__O______1 -> X__O____X_2
+	X__O____X_2 -> XO_O____X_3
+	X__O____X_2 -> X_OO____X_3
+	X__OO___X_3 [label="X |   |  
+--+---+--
+O | O |  
+--+---+--
+  |   | X" fillcolor=white fontname=Courier fontsize=10 shape=box style=filled]
+	X__O____X_2 -> X__OO___X_3
+	X__O_O__X_3 [label="X |   |  
+--+---+--
+O |   | O
+--+---+--
+  |   | X" fillcolor=white fontname=Courier fontsize=10 shape=box style=filled]
+	X__O____X_2 -> X__O_O__X_3
+	X__O__O_X_3 [label="X |   |  
+--+---+--
+O |   |  
+--+---+--
+O |   | X" fillcolor=white fontname=Courier fontsize=10 shape=box style=filled]
+	X__O____X_2 -> X__O__O_X_3
+	X__O___OX_3 [label="X |   |  
+--+---+--
+O |   |  
+--+---+--
+  | O | X" fillcolor=white fontname=Courier fontsize=10 shape=box style=filled]
+	X__O____X_2 -> X__O___OX_3
+	X___O_____1 [label="X |   |  
+--+---+--
+  | O |  
+--+---+--
+  |   |  " fillcolor=white fontname=Courier fontsize=10 shape=box style=filled]
+	X_________0 -> X___O_____1
+	XX__O_____2 [label="X | X |  
+--+---+--
+  | O |  
+--+---+--
+  |   |  " fillcolor=white fontname=Courier fontsize=10 shape=box style=filled]
+	X___O_____1 -> XX__O_____2
+	XX__O_____2 -> XXO_O_____3
+	XX__O_____2 -> XX_OO_____3
+	XX__OO____3 [label="X | X |  
+--+---+--
+  | O | O
+--+---+--
+  |   |  " fillcolor=white fontname=Courier fontsize=10 shape=box style=filled]
+	XX__O_____2 -> XX__OO____3
+	XX__O_O___3 [label="X | X |  
+--+---+--
+  | O |  
+--+---+--
+O |   |  " fillcolor=white fontname=Courier fontsize=10 shape=box style=filled]
+	XX__O_____2 -> XX__O_O___3
+	XX__O__O__3 [label="X | X |  
+--+---+--
+  | O |  
+--+---+--
+  | O |  " fillcolor=white fontname=Courier fontsize=10 shape=box style=filled]
+	XX__O_____2 -> XX__O__O__3
+	XX__O___O_3 [label="X | X |  
+--+---+--
+  | O |  
+--+---+--
+  |   | O" fillcolor=white fontname=Courier fontsize=10 shape=box style=filled]
+	XX__O_____2 -> XX__O___O_3
+	X_X_O_____2 [label="X |   | X
+--+---+--
+  | O |  
+--+---+--
+  |   |  " fillcolor=white fontname=Courier fontsize=10 shape=box style=filled]
+	X___O_____1 -> X_X_O_____2
+	X_X_O_____2 -> XOX_O_____3
+	X_X_O_____2 -> X_XOO_____3
+	X_X_OO____3 [label="X |   | X
+--+---+--
+  | O | O
+--+---+--
+  |   |  " fillcolor=white fontname=Courier fontsize=10 shape=box style=filled]
+	X_X_O_____2 -> X_X_OO____3
+	X_X_O_O___3 [label="X |   | X
+--+---+--
+  | O |  
+--+---+--
+O |   |  " fillcolor=white fontname=Courier fontsize=10 shape=box style=filled]
+	X_X_O_____2 -> X_X_O_O___3
+	X_X_O__O__3 [label="X |   | X
+--+---+--
+  | O |  
+--+---+--
+  | O |  " fillcolor=white fontname=Courier fontsize=10 shape=box style=filled]
+	X_X_O_____2 -> X_X_O__O__3
+	X_X_O___O_3 [label="X |   | X
+--+---+--
+  | O |  
+--+---+--
+  |   | O" fillcolor=white fontname=Courier fontsize=10 shape=box style=filled]
+	X_X_O_____2 -> X_X_O___O_3
+	X__XO_____2 [label="X |   |  
+--+---+--
+X | O |  
+--+---+--
+  |   |  " fillcolor=white fontname=Courier fontsize=10 shape=box style=filled]
+	X___O_____1 -> X__XO_____2
+	X__XO_____2 -> XO_XO_____3
+	X__XO_____2 -> X_OXO_____3
+	X__XOO____3 [label="X |   |  
+--+---+--
+X | O | O
+--+---+--
+  |   |  " fillcolor=white fontname=Courier fontsize=10 shape=box style=filled]
+	X__XO_____2 -> X__XOO____3
+	X__XO_O___3 [label="X |   |  
+--+---+--
+X | O |  
+--+---+--
+O |   |  " fillcolor=white fontname=Courier fontsize=10 shape=box style=filled]
+	X__XO_____2 -> X__XO_O___3
+	X__XO__O__3 [label="X |   |  
+--+---+--
+X | O |  
+--+---+--
+  | O |  " fillcolor=white fontname=Courier fontsize=10 shape=box style=filled]
+	X__XO_____2 -> X__XO__O__3
+	X__XO___O_3 [label="X |   |  
+--+---+--
+X | O |  
+--+---+--
+  |   | O" fillcolor=white fontname=Courier fontsize=10 shape=box style=filled]
+	X__XO_____2 -> X__XO___O_3
+	X___OX____2 [label="X |   |  
+--+---+--
+  | O | X
+--+---+--
+  |   |  " fillcolor=white fontname=Courier fontsize=10 shape=box style=filled]
+	X___O_____1 -> X___OX____2
+	X___OX____2 -> XO__OX____3
+	X___OX____2 -> X_O_OX____3
+	X___OX____2 -> X__OOX____3
+	X___OXO___3 [label="X |   |  
+--+---+--
+  | O | X
+--+---+--
+O |   |  " fillcolor=white fontname=Courier fontsize=10 shape=box style=filled]
+	X___OX____2 -> X___OXO___3
+	X___OX_O__3 [label="X |   |  
+--+---+--
+  | O | X
+--+---+--
+  | O |  " fillcolor=white fontname=Courier fontsize=10 shape=box style=filled]
+	X___OX____2 -> X___OX_O__3
+	X___OX__O_3 [label="X |   |  
+--+---+--
+  | O | X
+--+---+--
+  |   | O" fillcolor=white fontname=Courier fontsize=10 shape=box style=filled]
+	X___OX____2 -> X___OX__O_3
+	X___O_X___2 [label="X |   |  
+--+---+--
+  | O |  
+--+---+--
+X |   |  " fillcolor=white fontname=Courier fontsize=10 shape=box style=filled]
+	X___O_____1 -> X___O_X___2
+	X___O_X___2 -> XO__O_X___3
+	X___O_X___2 -> X_O_O_X___3
+	X___O_X___2 -> X__OO_X___3
+	X___OOX___3 [label="X |   |  
+--+---+--
+  | O | O
+--+---+--
+X |   |  " fillcolor=white fontname=Courier fontsize=10 shape=box style=filled]
+	X___O_X___2 -> X___OOX___3
+	X___O_XO__3 [label="X |   |  
+--+---+--
+  | O |  
+--+---+--
+X | O |  " fillcolor=white fontname=Courier fontsize=10 shape=box style=filled]
+	X___O_X___2 -> X___O_XO__3
+	X___O_X_O_3 [label="X |   |  
+--+---+--
+  | O |  
+--+---+--
+X |   | O" fillcolor=white fontname=Courier fontsize=10 shape=box style=filled]
+	X___O_X___2 -> X___O_X_O_3
+	X___O__X__2 [label="X |   |  
+--+---+--
+  | O |  
+--+---+--
+  | X |  " fillcolor=white fontname=Courier fontsize=10 shape=box style=filled]
+	X___O_____1 -> X___O__X__2
+	X___O__X__2 -> XO__O__X__3
+	X___O__X__2 -> X_O_O__X__3
+	X___O__X__2 -> X__OO__X__3
+	X___OO_X__3 [label="X |   |  
+--+---+--
+  | O | O
+--+---+--
+  | X |  " fillcolor=white fontname=Courier fontsize=10 shape=box style=filled]
+	X___O__X__2 -> X___OO_X__3
+	X___O_OX__3 [label="X |   |  
+--+---+--
+  | O |  
+--+---+--
+O | X |  " fillcolor=white fontname=Courier fontsize=10 shape=box style=filled]
+	X___O__X__2 -> X___O_OX__3
+	X___O__XO_3 [label="X |   |  
+--+---+--
+  | O |  
+--+---+--
+  | X | O" fillcolor=white fontname=Courier fontsize=10 shape=box style=filled]
+	X___O__X__2 -> X___O__XO_3
+	X___O___X_2 [label="X |   |  
+--+---+--
+  | O |  
+--+---+--
+  |   | X" fillcolor=white fontname=Courier fontsize=10 shape=box style=filled]
+	X___O_____1 -> X___O___X_2
+	X___O___X_2 -> XO__O___X_3
+	X___O___X_2 -> X_O_O___X_3
+	X___O___X_2 -> X__OO___X_3
+	X___OO__X_3 [label="X |   |  
+--+---+--
+  | O | O
+--+---+--
+  |   | X" fillcolor=white fontname=Courier fontsize=10 shape=box style=filled]
+	X___O___X_2 -> X___OO__X_3
+	X___O_O_X_3 [label="X |   |  
+--+---+--
+  | O |  
+--+---+--
+O |   | X" fillcolor=white fontname=Courier fontsize=10 shape=box style=filled]
+	X___O___X_2 -> X___O_O_X_3
+	X___O__OX_3 [label="X |   |  
+--+---+--
+  | O |  
+--+---+--
+  | O | X" fillcolor=white fontname=Courier fontsize=10 shape=box style=filled]
+	X___O___X_2 -> X___O__OX_3
+	X____O____1 [label="X |   |  
+--+---+--
+  |   | O
+--+---+--
+  |   |  " fillcolor=white fontname=Courier fontsize=10 shape=box style=filled]
+	X_________0 -> X____O____1
+	XX___O____2 [label="X | X |  
+--+---+--
+  |   | O
+--+---+--
+  |   |  " fillcolor=white fontname=Courier fontsize=10 shape=box style=filled]
+	X____O____1 -> XX___O____2
+	XX___O____2 -> XXO__O____3
+	XX___O____2 -> XX_O_O____3
+	XX___O____2 -> XX__OO____3
+	XX___OO___3 [label="X | X |  
+--+---+--
+  |   | O
+--+---+--
+O |   |  " fillcolor=white fontname=Courier fontsize=10 shape=box style=filled]
+	XX___O____2 -> XX___OO___3
+	XX___O_O__3 [label="X | X |  
+--+---+--
+  |   | O
+--+---+--
+  | O |  " fillcolor=white fontname=Courier fontsize=10 shape=box style=filled]
+	XX___O____2 -> XX___O_O__3
+	XX___O__O_3 [label="X | X |  
+--+---+--
+  |   | O
+--+---+--
+  |   | O" fillcolor=white fontname=Courier fontsize=10 shape=box style=filled]
+	XX___O____2 -> XX___O__O_3
+	X_X__O____2 [label="X |   | X
+--+---+--
+  |   | O
+--+---+--
+  |   |  " fillcolor=white fontname=Courier fontsize=10 shape=box style=filled]
+	X____O____1 -> X_X__O____2
+	X_X__O____2 -> XOX__O____3
+	X_X__O____2 -> X_XO_O____3
+	X_X__O____2 -> X_X_OO____3
+	X_X__OO___3 [label="X |   | X
+--+---+--
+  |   | O
+--+---+--
+O |   |  " fillcolor=white fontname=Courier fontsize=10 shape=box style=filled]
+	X_X__O____2 -> X_X__OO___3
+	X_X__O_O__3 [label="X |   | X
+--+---+--
+  |   | O
+--+---+--
+  | O |  " fillcolor=white fontname=Courier fontsize=10 shape=box style=filled]
+	X_X__O____2 -> X_X__O_O__3
+	X_X__O__O_3 [label="X |   | X
+--+---+--
+  |   | O
+--+---+--
+  |   | O" fillcolor=white fontname=Courier fontsize=10 shape=box style=filled]
+	X_X__O____2 -> X_X__O__O_3
+	X__X_O____2 [label="X |   |  
+--+---+--
+X |   | O
+--+---+--
+  |   |  " fillcolor=white fontname=Courier fontsize=10 shape=box style=filled]
+	X____O____1 -> X__X_O____2
+	X__X_O____2 -> XO_X_O____3
+	X__X_O____2 -> X_OX_O____3
+	X__X_O____2 -> X__XOO____3
+	X__X_OO___3 [label="X |   |  
+--+---+--
+X |   | O
+--+---+--
+O |   |  " fillcolor=white fontname=Courier fontsize=10 shape=box style=filled]
+	X__X_O____2 -> X__X_OO___3
+	X__X_O_O__3 [label="X |   |  
+--+---+--
+X |   | O
+--+---+--
+  | O |  " fillcolor=white fontname=Courier fontsize=10 shape=box style=filled]
+	X__X_O____2 -> X__X_O_O__3
+	X__X_O__O_3 [label="X |   |  
+--+---+--
+X |   | O
+--+---+--
+  |   | O" fillcolor=white fontname=Courier fontsize=10 shape=box style=filled]
+	X__X_O____2 -> X__X_O__O_3
+	X___XO____2 [label="X |   |  
+--+---+--
+  | X | O
+--+---+--
+  |   |  " fillcolor=white fontname=Courier fontsize=10 shape=box style=filled]
+	X____O____1 -> X___XO____2
+	X___XO____2 -> XO__XO____3
+	X___XO____2 -> X_O_XO____3
+	X___XO____2 -> X__OXO____3
+	X___XOO___3 [label="X |   |  
+--+---+--
+  | X | O
+--+---+--
+O |   |  " fillcolor=white fontname=Courier fontsize=10 shape=box style=filled]
+	X___XO____2 -> X___XOO___3
+	X___XO_O__3 [label="X |   |  
+--+---+--
+  | X | O
+--+---+--
+  | O |  " fillcolor=white fontname=Courier fontsize=10 shape=box style=filled]
+	X___XO____2 -> X___XO_O__3
+	X___XO__O_3 [label="X |   |  
+--+---+--
+  | X | O
+--+---+--
+  |   | O" fillcolor=white fontname=Courier fontsize=10 shape=box style=filled]
+	X___XO____2 -> X___XO__O_3
+	X____OX___2 [label="X |   |  
+--+---+--
+  |   | O
+--+---+--
+X |   |  " fillcolor=white fontname=Courier fontsize=10 shape=box style=filled]
+	X____O____1 -> X____OX___2
+	X____OX___2 -> XO___OX___3
+	X____OX___2 -> X_O__OX___3
+	X____OX___2 -> X__O_OX___3
+	X____OX___2 -> X___OOX___3
+	X____OXO__3 [label="X |   |  
+--+---+--
+  |   | O
+--+---+--
+X | O |  " fillcolor=white fontname=Courier fontsize=10 shape=box style=filled]
+	X____OX___2 -> X____OXO__3
+	X____OX_O_3 [label="X |   |  
+--+---+--
+  |   | O
+--+---+--
+X |   | O" fillcolor=white fontname=Courier fontsize=10 shape=box style=filled]
+	X____OX___2 -> X____OX_O_3
+	X____O_X__2 [label="X |   |  
+--+---+--
+  |   | O
+--+---+--
+  | X |  " fillcolor=white fontname=Courier fontsize=10 shape=box style=filled]
+	X____O____1 -> X____O_X__2
+	X____O_X__2 -> XO___O_X__3
+	X____O_X__2 -> X_O__O_X__3
+	X____O_X__2 -> X__O_O_X__3
+	X____O_X__2 -> X___OO_X__3
+	X____OOX__3 [label="X |   |  
+--+---+--
+  |   | O
+--+---+--
+O | X |  " fillcolor=white fontname=Courier fontsize=10 shape=box style=filled]
+	X____O_X__2 -> X____OOX__3
+	X____O_XO_3 [label="X |   |  
+--+---+--
+  |   | O
+--+---+--
+  | X | O" fillcolor=white fontname=Courier fontsize=10 shape=box style=filled]
+	X____O_X__2 -> X____O_XO_3
+	X____O__X_2 [label="X |   |  
+--+---+--
+  |   | O
+--+---+--
+  |   | X" fillcolor=white fontname=Courier fontsize=10 shape=box style=filled]
+	X____O____1 -> X____O__X_2
+	X____O__X_2 -> XO___O__X_3
+	X____O__X_2 -> X_O__O__X_3
+	X____O__X_2 -> X__O_O__X_3
+	X____O__X_2 -> X___OO__X_3
+	X____OO_X_3 [label="X |   |  
+--+---+--
+  |   | O
+--+---+--
+O |   | X" fillcolor=white fontname=Courier fontsize=10 shape=box style=filled]
+	X____O__X_2 -> X____OO_X_3
+	X____O_OX_3 [label="X |   |  
+--+---+--
+  |   | O
+--+---+--
+  | O | X" fillcolor=white fontname=Courier fontsize=10 shape=box style=filled]
+	X____O__X_2 -> X____O_OX_3
+	X_____O___1 [label="X |   |  
+--+---+--
+  |   |  
+--+---+--
+O |   |  " fillcolor=white fontname=Courier fontsize=10 shape=box style=filled]
+	X_________0 -> X_____O___1
+	XX____O___2 [label="X | X |  
+--+---+--
+  |   |  
+--+---+--
+O |   |  " fillcolor=white fontname=Courier fontsize=10 shape=box style=filled]
+	X_____O___1 -> XX____O___2
+	XX____O___2 -> XXO___O___3
+	XX____O___2 -> XX_O__O___3
+	XX____O___2 -> XX__O_O___3
+	XX____O___2 -> XX___OO___3
+	XX____OO__3 [label="X | X |  
+--+---+--
+  |   |  
+--+---+--
+O | O |  " fillcolor=white fontname=Courier fontsize=10 shape=box style=filled]
+	XX____O___2 -> XX____OO__3
+	XX____O_O_3 [label="X | X |  
+--+---+--
+  |   |  
+--+---+--
+O |   | O" fillcolor=white fontname=Courier fontsize=10 shape=box style=filled]
+	XX____O___2 -> XX____O_O_3
+	X_X___O___2 [label="X |   | X
+--+---+--
+  |   |  
+--+---+--
+O |   |  " fillcolor=white fontname=Courier fontsize=10 shape=box style=filled]
+	X_____O___1 -> X_X___O___2
+	X_X___O___2 -> XOX___O___3
+	X_X___O___2 -> X_XO__O___3
+	X_X___O___2 -> X_X_O_O___3
+	X_X___O___2 -> X_X__OO___3
+	X_X___OO__3 [label="X |   | X
+--+---+--
+  |   |  
+--+---+--
+O | O |  " fillcolor=white fontname=Courier fontsize=10 shape=box style=filled]
+	X_X___O___2 -> X_X___OO__3
+	X_X___O_O_3 [label="X |   | X
+--+---+--
+  |   |  
+--+---+--
+O |   | O" fillcolor=white fontname=Courier fontsize=10 shape=box style=filled]
+	X_X___O___2 -> X_X___O_O_3
+	X__X__O___2 [label="X |   |  
+--+---+--
+X |   |  
+--+---+--
+O |   |  " fillcolor=white fontname=Courier fontsize=10 shape=box style=filled]
+	X_____O___1 -> X__X__O___2
+	X__X__O___2 -> XO_X__O___3
+	X__X__O___2 -> X_OX__O___3
+	X__X__O___2 -> X__XO_O___3
+	X__X__O___2 -> X__X_OO___3
+	X__X__OO__3 [label="X |   |  
+--+---+--
+X |   |  
+--+---+--
+O | O |  " fillcolor=white fontname=Courier fontsize=10 shape=box style=filled]
+	X__X__O___2 -> X__X__OO__3
+	X__X__O_O_3 [label="X |   |  
+--+---+--
+X |   |  
+--+---+--
+O |   | O" fillcolor=white fontname=Courier fontsize=10 shape=box style=filled]
+	X__X__O___2 -> X__X__O_O_3
+	X___X_O___2 [label="X |   |  
+--+---+--
+  | X |  
+--+---+--
+O |   |  " fillcolor=white fontname=Courier fontsize=10 shape=box style=filled]
+	X_____O___1 -> X___X_O___2
+	X___X_O___2 -> XO__X_O___3
+	X___X_O___2 -> X_O_X_O___3
+	X___X_O___2 -> X__OX_O___3
+	X___X_O___2 -> X___XOO___3
+	X___X_OO__3 [label="X |   |  
+--+---+--
+  | X |  
+--+---+--
+O | O |  " fillcolor=white fontname=Courier fontsize=10 shape=box style=filled]
+	X___X_O___2 -> X___X_OO__3
+	X___X_O_O_3 [label="X |   |  
+--+---+--
+  | X |  
+--+---+--
+O |   | O" fillcolor=white fontname=Courier fontsize=10 shape=box style=filled]
+	X___X_O___2 -> X___X_O_O_3
+	X____XO___2 [label="X |   |  
+--+---+--
+  |   | X
+--+---+--
+O |   |  " fillcolor=white fontname=Courier fontsize=10 shape=box style=filled]
+	X_____O___1 -> X____XO___2
+	X____XO___2 -> XO___XO___3
+	X____XO___2 -> X_O__XO___3
+	X____XO___2 -> X__O_XO___3
+	X____XO___2 -> X___OXO___3
+	X____XOO__3 [label="X |   |  
+--+---+--
+  |   | X
+--+---+--
+O | O |  " fillcolor=white fontname=Courier fontsize=10 shape=box style=filled]
+	X____XO___2 -> X____XOO__3
+	X____XO_O_3 [label="X |   |  
+--+---+--
+  |   | X
+--+---+--
+O |   | O" fillcolor=white fontname=Courier fontsize=10 shape=box style=filled]
+	X____XO___2 -> X____XO_O_3
+	X_____OX__2 [label="X |   |  
+--+---+--
+  |   |  
+--+---+--
+O | X |  " fillcolor=white fontname=Courier fontsize=10 shape=box style=filled]
+	X_____O___1 -> X_____OX__2
+	X_____OX__2 -> XO____OX__3
+	X_____OX__2 -> X_O___OX__3
+	X_____OX__2 -> X__O__OX__3
+	X_____OX__2 -> X___O_OX__3
+	X_____OX__2 -> X____OOX__3
+	X_____OXO_3 [label="X |   |  
+--+---+--
+  |   |  
+--+---+--
+O | X | O" fillcolor=white fontname=Courier fontsize=10 shape=box style=filled]
+	X_____OX__2 -> X_____OXO_3
+	X_____O_X_2 [label="X |   |  
+--+---+--
+  |   |  
+--+---+--
+O |   | X" fillcolor=white fontname=Courier fontsize=10 shape=box style=filled]
+	X_____O___1 -> X_____O_X_2
+	X_____O_X_2 -> XO____O_X_3
+	X_____O_X_2 -> X_O___O_X_3
+	X_____O_X_2 -> X__O__O_X_3
+	X_____O_X_2 -> X___O_O_X_3
+	X_____O_X_2 -> X____OO_X_3
+	X_____OOX_3 [label="X |   |  
+--+---+--
+  |   |  
+--+---+--
+O | O | X" fillcolor=white fontname=Courier fontsize=10 shape=box style=filled]
+	X_____O_X_2 -> X_____OOX_3
+	X______O__1 [label="X |   |  
+--+---+--
+  |   |  
+--+---+--
+  | O |  " fillcolor=white fontname=Courier fontsize=10 shape=box style=filled]
+	X_________0 -> X______O__1
+	XX_____O__2 [label="X | X |  
+--+---+--
+  |   |  
+--+---+--
+  | O |  " fillcolor=white fontname=Courier fontsize=10 shape=box style=filled]
+	X______O__1 -> XX_____O__2
+	XX_____O__2 -> XXO____O__3
+	XX_____O__2 -> XX_O___O__3
+	XX_____O__2 -> XX__O__O__3
+	XX_____O__2 -> XX___O_O__3
+	XX_____O__2 -> XX____OO__3
+	XX_____OO_3 [label="X | X |  
+--+---+--
+  |   |  
+--+---+--
+  | O | O" fillcolor=white fontname=Courier fontsize=10 shape=box style=filled]
+	XX_____O__2 -> XX_____OO_3
+	X_X____O__2 [label="X |   | X
+--+---+--
+  |   |  
+--+---+--
+  | O |  " fillcolor=white fontname=Courier fontsize=10 shape=box style=filled]
+	X______O__1 -> X_X____O__2
+	X_X____O__2 -> XOX____O__3
+	X_X____O__2 -> X_XO___O__3
+	X_X____O__2 -> X_X_O__O__3
+	X_X____O__2 -> X_X__O_O__3
+	X_X____O__2 -> X_X___OO__3
+	X_X____OO_3 [label="X |   | X
+--+---+--
+  |   |  
+--+---+--
+  | O | O" fillcolor=white fontname=Courier fontsize=10 shape=box style=filled]
+	X_X____O__2 -> X_X____OO_3
+	X__X___O__2 [label="X |   |  
+--+---+--
+X |   |  
+--+---+--
+  | O |  " fillcolor=white fontname=Courier fontsize=10 shape=box style=filled]
+	X______O__1 -> X__X___O__2
+	X__X___O__2 -> XO_X___O__3
+	X__X___O__2 -> X_OX___O__3
+	X__X___O__2 -> X__XO__O__3
+	X__X___O__2 -> X__X_O_O__3
+	X__X___O__2 -> X__X__OO__3
+	X__X___OO_3 [label="X |   |  
+--+---+--
+X |   |  
+--+---+--
+  | O | O" fillcolor=white fontname=Courier fontsize=10 shape=box style=filled]
+	X__X___O__2 -> X__X___OO_3
+	X___X__O__2 [label="X |   |  
+--+---+--
+  | X |  
+--+---+--
+  | O |  " fillcolor=white fontname=Courier fontsize=10 shape=box style=filled]
+	X______O__1 -> X___X__O__2
+	X___X__O__2 -> XO__X__O__3
+	X___X__O__2 -> X_O_X__O__3
+	X___X__O__2 -> X__OX__O__3
+	X___X__O__2 -> X___XO_O__3
+	X___X__O__2 -> X___X_OO__3
+	X___X__OO_3 [label="X |   |  
+--+---+--
+  | X |  
+--+---+--
+  | O | O" fillcolor=white fontname=Courier fontsize=10 shape=box style=filled]
+	X___X__O__2 -> X___X__OO_3
+	X____X_O__2 [label="X |   |  
+--+---+--
+  |   | X
+--+---+--
+  | O |  " fillcolor=white fontname=Courier fontsize=10 shape=box style=filled]
+	X______O__1 -> X____X_O__2
+	X____X_O__2 -> XO___X_O__3
+	X____X_O__2 -> X_O__X_O__3
+	X____X_O__2 -> X__O_X_O__3
+	X____X_O__2 -> X___OX_O__3
+	X____X_O__2 -> X____XOO__3
+	X____X_OO_3 [label="X |   |  
+--+---+--
+  |   | X
+--+---+--
+  | O | O" fillcolor=white fontname=Courier fontsize=10 shape=box style=filled]
+	X____X_O__2 -> X____X_OO_3
+	X_____XO__2 [label="X |   |  
+--+---+--
+  |   |  
+--+---+--
+X | O |  " fillcolor=white fontname=Courier fontsize=10 shape=box style=filled]
+	X______O__1 -> X_____XO__2
+	X_____XO__2 -> XO____XO__3
+	X_____XO__2 -> X_O___XO__3
+	X_____XO__2 -> X__O__XO__3
+	X_____XO__2 -> X___O_XO__3
+	X_____XO__2 -> X____OXO__3
+	X_____XOO_3 [label="X |   |  
+--+---+--
+  |   |  
+--+---+--
+X | O | O" fillcolor=white fontname=Courier fontsize=10 shape=box style=filled]
+	X_____XO__2 -> X_____XOO_3
+	X______OX_2 [label="X |   |  
+--+---+--
+  |   |  
+--+---+--
+  | O | X" fillcolor=white fontname=Courier fontsize=10 shape=box style=filled]
+	X______O__1 -> X______OX_2
+	X______OX_2 -> XO_____OX_3
+	X______OX_2 -> X_O____OX_3
+	X______OX_2 -> X__O___OX_3
+	X______OX_2 -> X___O__OX_3
+	X______OX_2 -> X____O_OX_3
+	X______OX_2 -> X_____OOX_3
+	X_______O_1 [label="X |   |  
+--+---+--
+  |   |  
+--+---+--
+  |   | O" fillcolor=white fontname=Courier fontsize=10 shape=box style=filled]
+	X_________0 -> X_______O_1
+	XX______O_2 [label="X | X |  
+--+---+--
+  |   |  
+--+---+--
+  |   | O" fillcolor=white fontname=Courier fontsize=10 shape=box style=filled]
+	X_______O_1 -> XX______O_2
+	XX______O_2 -> XXO_____O_3
+	XX______O_2 -> XX_O____O_3
+	XX______O_2 -> XX__O___O_3
+	XX______O_2 -> XX___O__O_3
+	XX______O_2 -> XX____O_O_3
+	XX______O_2 -> XX_____OO_3
+	X_X_____O_2 [label="X |   | X
+--+---+--
+  |   |  
+--+---+--
+  |   | O" fillcolor=white fontname=Courier fontsize=10 shape=box style=filled]
+	X_______O_1 -> X_X_____O_2
+	X_X_____O_2 -> XOX_____O_3
+	X_X_____O_2 -> X_XO____O_3
+	X_X_____O_2 -> X_X_O___O_3
+	X_X_____O_2 -> X_X__O__O_3
+	X_X_____O_2 -> X_X___O_O_3
+	X_X_____O_2 -> X_X____OO_3
+	X__X____O_2 [label="X |   |  
+--+---+--
+X |   |  
+--+---+--
+  |   | O" fillcolor=white fontname=Courier fontsize=10 shape=box style=filled]
+	X_______O_1 -> X__X____O_2
+	X__X____O_2 -> XO_X____O_3
+	X__X____O_2 -> X_OX____O_3
+	X__X____O_2 -> X__XO___O_3
+	X__X____O_2 -> X__X_O__O_3
+	X__X____O_2 -> X__X__O_O_3
+	X__X____O_2 -> X__X___OO_3
+	X___X___O_2 [label="X |   |  
+--+---+--
+  | X |  
+--+---+--
+  |   | O" fillcolor=white fontname=Courier fontsize=10 shape=box style=filled]
+	X_______O_1 -> X___X___O_2
+	X___X___O_2 -> XO__X___O_3
+	X___X___O_2 -> X_O_X___O_3
+	X___X___O_2 -> X__OX___O_3
+	X___X___O_2 -> X___XO__O_3
+	X___X___O_2 -> X___X_O_O_3
+	X___X___O_2 -> X___X__OO_3
+	X____X__O_2 [label="X |   |  
+--+---+--
+  |   | X
+--+---+--
+  |   | O" fillcolor=white fontname=Courier fontsize=10 shape=box style=filled]
+	X_______O_1 -> X____X__O_2
+	X____X__O_2 -> XO___X__O_3
+	X____X__O_2 -> X_O__X__O_3
+	X____X__O_2 -> X__O_X__O_3
+	X____X__O_2 -> X___OX__O_3
+	X____X__O_2 -> X____XO_O_3
+	X____X__O_2 -> X____X_OO_3
+	X_____X_O_2 [label="X |   |  
+--+---+--
+  |   |  
+--+---+--
+X |   | O" fillcolor=white fontname=Courier fontsize=10 shape=box style=filled]
+	X_______O_1 -> X_____X_O_2
+	X_____X_O_2 -> XO____X_O_3
+	X_____X_O_2 -> X_O___X_O_3
+	X_____X_O_2 -> X__O__X_O_3
+	X_____X_O_2 -> X___O_X_O_3
+	X_____X_O_2 -> X____OX_O_3
+	X_____X_O_2 -> X_____XOO_3
+	X______XO_2 [label="X |   |  
+--+---+--
+  |   |  
+--+---+--
+  | X | O" fillcolor=white fontname=Courier fontsize=10 shape=box style=filled]
+	X_______O_1 -> X______XO_2
+	X______XO_2 -> XO_____XO_3
+	X______XO_2 -> X_O____XO_3
+	X______XO_2 -> X__O___XO_3
+	X______XO_2 -> X___O__XO_3
+	X______XO_2 -> X____O_XO_3
+	X______XO_2 -> X_____OXO_3
+}

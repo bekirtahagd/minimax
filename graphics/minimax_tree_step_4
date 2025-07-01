@@ -1,0 +1,32 @@
+// TicTacToe-Minimax-Tree
+digraph {
+	XOX_O_OXX_0 [label="X | O | X
+--+---+--
+  | O |  
+--+---+--
+O | X | X" fillcolor=white fontname=Courier fontsize=10 shape=box style=filled]
+	XOXOO_OXX_1 [label="X | O | X
+--+---+--
+O | O |  
+--+---+--
+O | X | X" fillcolor=white fontname=Courier fontsize=10 shape=box style=filled]
+	XOX_O_OXX_0 -> XOXOO_OXX_1
+	XOXOOXOXX_2 [label="X | O | X
+--+---+--
+O | O | X
+--+---+--
+O | X | X" fillcolor=red fontname=Courier fontsize=10 shape=box style=filled]
+	XOXOO_OXX_1 -> XOXOOXOXX_2
+	XOX_OOOXX_1 [label="X | O | X
+--+---+--
+  | O | O
+--+---+--
+O | X | X" fillcolor=white fontname=Courier fontsize=10 shape=box style=filled]
+	XOX_O_OXX_0 -> XOX_OOOXX_1
+	XOXXOOOXX_2 [label="X | O | X
+--+---+--
+X | O | O
+--+---+--
+O | X | X" fillcolor=deepskyblue fontname=Courier fontsize=10 shape=box style=filled]
+	XOX_OOOXX_1 -> XOXXOOOXX_2
+}
